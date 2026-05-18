@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #08090E;
+  --color-bg-secondary: #0F1118;
+  --color-bg-tertiary: #161822;
+  --color-accent: #00E5A0;
+  --color-accent-dim: rgba(0, 229, 160, 0.125);
+  --color-text-primary: #F0F0F5;
+  --color-text-secondary: #8888A0;
+  --color-text-muted: #44445A;
+  --color-positive: #00E5A0;
+  --color-negative: #FF4D6D;
+  --color-warning: #FFB800;
+  --color-border: #1E2030;
+  --font-family-heading: var(--font-space-grotesk), sans-serif;
+  --font-family-mono: var(--font-jetbrains-mono), monospace;
+}
+
+:root {
+  --bg-primary: #08090E;
+  --bg-secondary: #0F1118;
+  --bg-tertiary: #161822;
+  --accent: #00E5A0;
+  --accent-dim: rgba(0, 229, 160, 0.125);
+  --text-primary: #F0F0F5;
+  --text-secondary: #8888A0;
+  --text-muted: #44445A;
+  --positive: #00E5A0;
+  --negative: #FF4D6D;
+  --warning: #FFB800;
+  --border-color: #1E2030;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; color-scheme: dark; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+::selection { background: var(--accent-dim); color: var(--accent); }
+
+.font-mono-data { font-family: var(--font-jetbrains-mono), monospace; }
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent), #00B4D8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(15, 17, 24, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(22, 24, 34, 0.9), rgba(15, 17, 24, 0.7));
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 229, 160, 0.1);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px rgba(0, 229, 160, 0.15), 0 0 60px rgba(0, 229, 160, 0.05);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(30, 32, 48, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 32, 48, 0.3) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.btn-primary {
+  background: var(--accent); color: var(--bg-primary); font-weight: 600;
+  padding: 12px 28px; border-radius: 12px; border: none; cursor: pointer;
+  transition: all 0.2s ease; font-family: var(--font-space-grotesk), sans-serif;
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0, 229, 160, 0.3); }
+
+.btn-secondary {
+  background: transparent; color: var(--text-primary); font-weight: 500;
+  padding: 12px 28px; border-radius: 12px; border: 1px solid var(--border-color);
+  cursor: pointer; transition: all 0.2s ease;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+.input-dark {
+  background: var(--bg-tertiary); border: 1px solid var(--border-color);
+  border-radius: 12px; padding: 12px 16px; color: var(--text-primary);
+  font-size: 16px; transition: border-color 0.2s ease; outline: none; width: 100%;
+}
+.input-dark:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-dim); }
+.input-dark::placeholder { color: var(--text-muted); }
+
+.badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-easy { background: rgba(0, 229, 160, 0.15); color: var(--positive); }
+.badge-medium { background: rgba(255, 184, 0, 0.15); color: var(--warning); }
+.badge-hard { background: rgba(255, 77, 109, 0.15); color: var(--negative); }
+
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--border-color) 50%, var(--bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes slideUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes pulseRed { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes floatLine {
+  0%, 100% { transform: translateX(0) translateY(0); opacity: 0.15; }
+  50% { transform: translateX(30px) translateY(-10px); opacity: 0.3; }
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #00B4D8);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.news-ticker-wrap {
+  display: flex;
+  width: max-content;
+  animation: ticker 40s linear infinite;
+}
+
+.sim-portfolio-bar {
+  background: linear-gradient(90deg, rgba(0, 229, 160, 0.2), rgba(0, 180, 216, 0.2));
+  border: 1px solid rgba(0, 229, 160, 0.15);
+  border-radius: 12px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.result-section {
+  background: linear-gradient(135deg, rgba(22, 24, 34, 0.9), rgba(15, 17, 24, 0.7));
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.bias-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.bias-tag-detected {
+  background: rgba(255, 77, 109, 0.12);
+  color: var(--negative);
+  border: 1px solid rgba(255, 77, 109, 0.2);
+}
+
+.bias-tag-clear {
+  background: rgba(0, 229, 160, 0.08);
+  color: var(--positive);
+  border: 1px solid rgba(0, 229, 160, 0.15);
+}
